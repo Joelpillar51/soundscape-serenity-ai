@@ -18,7 +18,10 @@ const SoundCard = ({
   onClick 
 }: SoundCardProps) => {
   return (
-    <div className="sound-card group" onClick={onClick}>
+    <div 
+      className="sound-card group cursor-pointer hover:scale-[1.02] transition-all duration-200"
+      onClick={onClick}
+    >
       <div className="relative aspect-square rounded-md overflow-hidden mb-3">
         <img 
           src={imageUrl || "/placeholder.svg"} 

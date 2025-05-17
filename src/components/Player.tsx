@@ -8,14 +8,17 @@ interface PlayerProps {
   title?: string;
   artist?: string;
   coverUrl?: string;
+  isPlaying?: boolean;
+  onPlayPause?: () => void;
 }
 
 const Player = ({ 
   title = "Evening Calm", 
   artist = "Focus",
-  coverUrl = "/placeholder.svg" 
+  coverUrl = "/placeholder.svg",
+  isPlaying = false,
+  onPlayPause
 }: PlayerProps) => {
-  const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const duration = 180; // 3 minutes in seconds
 
@@ -26,7 +29,7 @@ const Player = ({
       interval = window.setInterval(() => {
         setCurrentTime((prev) => {
           if (prev >= duration) {
-            setIsPlaying(false);
+            if (onPlayPause) onPlayPause();
             return 0;
           }
           return prev + 1;
@@ -37,7 +40,7 @@ const Player = ({
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [isPlaying, duration]);
+  }, [isPlaying, duration, onPlayPause]);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -46,11 +49,11 @@ const Player = ({
   };
   
   const handlePlayPause = () => {
-    setIsPlaying(!isPlaying);
+    if (onPlayPause) onPlayPause();
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 player-bg py-3 px-4 z-50">
+    <div className="fixed bottom-0 left-0 right-0 bg-card/90 backdrop-blur-md py-3 px-4 border-t border-white/5 z-50">
       <div className="container mx-auto flex items-center">
         <div className="hidden md:flex items-center gap-3 w-1/4">
           <img src={coverUrl} alt={title} className="h-12 w-12 rounded-md object-cover" />
