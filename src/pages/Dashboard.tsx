@@ -34,7 +34,7 @@ const Dashboard = () => {
       toast({
         title: "Sound generated",
         description: "Your new soundscape is ready to play",
-        variant: "success",
+        variant: "default", // Changed from "success" to "default"
       });
     }, 2000);
   };
