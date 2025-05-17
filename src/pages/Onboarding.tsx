@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Checkbox } from "@/components/ui/checkbox";
 import WaveAnimation from "@/components/WaveAnimation";
 import { toast } from "@/hooks/use-toast";
 
@@ -51,7 +52,7 @@ const soundPreferences = [
 const Onboarding = () => {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState<OnboardingStep>(OnboardingStep.GOAL);
-  const [selectedGoal, setSelectedGoal] = useState<string | null>(null);
+  const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
   const [selectedMood, setSelectedMood] = useState<string | null>("calm");
   const [moodIntensity, setMoodIntensity] = useState<number[]>([50]);
   const [selectedAge, setSelectedAge] = useState<string | null>(null);
@@ -59,10 +60,20 @@ const Onboarding = () => {
   const [forSomeoneElse, setForSomeoneElse] = useState<boolean>(false);
   const [isGenerating, setIsGenerating] = useState<boolean>(false);
   
+  const toggleGoal = (goalId: string) => {
+    setSelectedGoals(prev => {
+      if (prev.includes(goalId)) {
+        return prev.filter(id => id !== goalId);
+      } else {
+        return [...prev, goalId];
+      }
+    });
+  };
+  
   const goToNextStep = () => {
-    if (currentStep === OnboardingStep.GOAL && !selectedGoal) {
+    if (currentStep === OnboardingStep.GOAL && selectedGoals.length === 0) {
       toast({
-        title: "Please select a goal",
+        title: "Please select at least one goal",
         description: "Choose what type of sound experience you're looking for",
         variant: "destructive",
       });
@@ -140,7 +151,7 @@ const Onboarding = () => {
   const getStepTitle = () => {
     switch (currentStep) {
       case OnboardingStep.GOAL:
-        return "Select Your Goal";
+        return "Select Your Goals";
       case OnboardingStep.MOOD:
         return "Choose Your Mood";
       case OnboardingStep.AGE:
@@ -185,21 +196,31 @@ const Onboarding = () => {
             {currentStep === OnboardingStep.GOAL && (
               <div className="space-y-6">
                 <p className="text-muted-foreground text-center mb-6">
-                  What type of sound experience are you looking for today?
+                  What type of sound experiences are you looking for today? (Select all that apply)
                 </p>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   {goalOptions.map((goal) => (
                     <div
                       key={goal.id}
                       className={`flex flex-col items-center justify-center gap-3 p-5 rounded-xl border cursor-pointer transition-all duration-300 ${
-                        selectedGoal === goal.id
+                        selectedGoals.includes(goal.id)
                           ? "border-primary bg-primary/10"
                           : "border-white/5 bg-card hover:bg-card/80"
                       }`}
-                      onClick={() => setSelectedGoal(goal.id)}
+                      onClick={() => toggleGoal(goal.id)}
                     >
                       <span className="text-3xl">{goal.icon}</span>
-                      <span className="text-sm font-medium">{goal.label}</span>
+                      <div className="flex items-center gap-2">
+                        <Checkbox 
+                          id={`goal-${goal.id}`} 
+                          checked={selectedGoals.includes(goal.id)}
+                          onCheckedChange={() => toggleGoal(goal.id)}
+                          className="data-[state=checked]:bg-primary"
+                        />
+                        <label htmlFor={`goal-${goal.id}`} className="text-sm font-medium cursor-pointer">
+                          {goal.label}
+                        </label>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -263,11 +284,10 @@ const Onboarding = () => {
                 
                 <div className="flex items-center justify-center mt-6">
                   <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      className="h-4 w-4 rounded border-white/20"
+                    <Checkbox
                       checked={forSomeoneElse}
-                      onChange={() => setForSomeoneElse(!forSomeoneElse)}
+                      onCheckedChange={() => setForSomeoneElse(!forSomeoneElse)}
+                      className="data-[state=checked]:bg-primary"
                     />
                     <span className="text-sm text-muted-foreground">
                       I'm creating for someone else
@@ -333,9 +353,11 @@ const Onboarding = () => {
                     <p className="text-sm text-muted-foreground mb-4">30-minute sleep soundscape</p>
                     
                     <div className="flex flex-wrap gap-2 justify-center mb-6">
-                      <span className="px-3 py-1 bg-secondary rounded-full text-xs">
-                        {selectedGoal ? goalOptions.find(g => g.id === selectedGoal)?.label : "Sleep"}
-                      </span>
+                      {selectedGoals.map((goalId) => (
+                        <span key={goalId} className="px-3 py-1 bg-secondary rounded-full text-xs">
+                          {goalOptions.find(g => g.id === goalId)?.label}
+                        </span>
+                      ))}
                       <span className="px-3 py-1 bg-secondary rounded-full text-xs">
                         {selectedMood ? moodOptions.find(m => m.id === selectedMood)?.label : "Calm"}
                       </span>
