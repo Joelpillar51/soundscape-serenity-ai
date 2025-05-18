@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Onboarding from "./pages/Onboarding";
 import Dashboard from "./pages/Dashboard";
 import Playlists from "./pages/Playlists";
+import Explore from "./pages/Explore";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
           <Route path="/dashboard/playlists" element={<Playlists />} />
+          <Route path="/dashboard/explore" element={<Explore />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </TooltipProvider>
