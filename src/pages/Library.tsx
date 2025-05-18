@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Search, Home, Compass, Library as LibraryIcon, Star, Settings } from "lucide-react";
+import { Search, Home, Compass, LibraryIcon, Star, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -87,7 +87,7 @@ const Library = () => {
             </a>
             <a href="/dashboard/library" 
               className="flex items-center gap-3 px-3 py-2 rounded-md bg-secondary text-foreground">
-              <Library className="h-5 w-5" />
+              <LibraryIcon className="h-5 w-5" />
               <span className="hidden md:block">Library</span>
             </a>
             <a href="/dashboard/playlists" 
@@ -117,7 +117,7 @@ const Library = () => {
             <h1 className="text-3xl font-bold">Library</h1>
           </div>
           
-          <Tabs defaultValue="songs" onValueChange={setActiveTab} className="w-full">
+          <Tabs defaultValue="songs" onValueChange={setActiveTab}>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
               <TabsList>
                 <TabsTrigger value="songs">Songs</TabsTrigger>
