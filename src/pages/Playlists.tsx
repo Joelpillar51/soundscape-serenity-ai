@@ -1,16 +1,18 @@
 
 import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { Search, Plus, Home, Library, Compass, Star, Settings } from "lucide-react";
+import { Search, Plus, Home, Library, Compass, Star, Settings, Disc } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import PlaylistCard from "@/components/PlaylistCard";
 import PlaylistDetailView from "@/components/PlaylistDetailView";
 import { playlists } from "@/data/playlistsData";
 import { toast } from "@/hooks/use-toast";
+import GeneratePlaylistDialog from "@/components/GeneratePlaylistDialog";
 
 const Playlists = () => {
   const [selectedPlaylist, setSelectedPlaylist] = useState<null | typeof playlists[0]>(null);
+  const [isGenerateDialogOpen, setIsGenerateDialogOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -19,6 +21,10 @@ const Playlists = () => {
       title: "Create playlist",
       description: "This feature is coming soon!",
     });
+  };
+
+  const handleGeneratePlaylist = () => {
+    setIsGenerateDialogOpen(true);
   };
 
   const isActivePath = (path: string) => {
@@ -92,6 +98,10 @@ const Playlists = () => {
                 className="pl-10 w-48 md:w-64"
               />
             </div>
+            <Button onClick={handleGeneratePlaylist} variant="secondary">
+              <Disc className="h-4 w-4 mr-2" />
+              Generate Playlist
+            </Button>
             <Button onClick={handleCreatePlaylist}>
               <Plus className="h-4 w-4 mr-2" />
               New Playlist
@@ -118,6 +128,12 @@ const Playlists = () => {
           <PlaylistDetailView playlist={selectedPlaylist} />
         )}
       </div>
+
+      {/* Generate Playlist Dialog */}
+      <GeneratePlaylistDialog 
+        isOpen={isGenerateDialogOpen} 
+        onClose={() => setIsGenerateDialogOpen(false)} 
+      />
     </div>
   );
 };
