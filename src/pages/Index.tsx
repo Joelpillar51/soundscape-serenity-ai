@@ -1,6 +1,5 @@
-
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -190,7 +189,7 @@ const Index = () => {
                   </div>
                 )}
                 
-                <h3 className="text-xl font-bold mb-2">{plan.title}</h3>
+                <h3 className="text-xl font-bold mb-2">{plan.title} Plan</h3>
                 <div className="mb-4">
                   <span className="text-3xl font-bold">{plan.price}</span>
                   {plan.period && (
@@ -202,21 +201,15 @@ const Index = () => {
                 <ul className="space-y-3 mb-8 flex-1">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm">
-                      <svg
-                        className="h-5 w-5 text-primary/80 flex-shrink-0"
-                        fill="none"
-                        height="24"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                        width="24"
-                      >
-                        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
-                        <path d="m9 12 2 2 4-4" />
-                      </svg>
+                      <Check className="h-5 w-5 text-primary/80 flex-shrink-0 mt-0.5" />
                       <span>{feature}</span>
+                    </li>
+                  ))}
+                  
+                  {plan.limitations && plan.limitations.length > 0 && plan.limitations.map((limitation, i) => (
+                    <li key={`limitation-${i}`} className="flex items-start gap-2 text-sm">
+                      <X className="h-5 w-5 text-destructive/80 flex-shrink-0 mt-0.5" />
+                      <span className="text-muted-foreground">{limitation}</span>
                     </li>
                   ))}
                 </ul>

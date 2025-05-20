@@ -3,7 +3,7 @@ import { Home, Compass, LibraryIcon, Star, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Check } from "lucide-react";
+import { Check, X } from "lucide-react";
 
 const UpgradePage = () => {
   return (
@@ -73,28 +73,37 @@ const UpgradePage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex flex-col gap-2">
-                  <span>Free</span>
+                  <span>Free Plan</span>
                   <span className="text-3xl font-bold">$0</span>
-                  <span className="text-sm font-normal text-muted-foreground">Forever</span>
+                  <span className="text-sm font-normal text-muted-foreground">/month</span>
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4 min-h-[240px]">
+                <p className="text-sm text-muted-foreground mb-4">For light users who want to explore before upgrading.</p>
                 <ul className="space-y-2">
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-primary mt-0.5" />
-                    <span>Limited sound library access</span>
+                    <span>Access to limited categories (e.g. Sleep, Calm, Focus)</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-primary mt-0.5" />
-                    <span>Basic mixing capabilities</span>
+                    <span>Stream up to 3 tracks/day</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-primary mt-0.5" />
-                    <span>5 playlists maximum</span>
+                    <span>Standard audio quality</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-primary mt-0.5" />
-                    <span>Ad-supported listening</span>
+                    <span>Ads supported</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <X className="h-5 w-5 text-destructive mt-0.5" />
+                    <span className="text-muted-foreground">No offline listening</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <X className="h-5 w-5 text-destructive mt-0.5" />
+                    <span className="text-muted-foreground">No playlists</span>
                   </li>
                 </ul>
               </CardContent>
@@ -108,32 +117,37 @@ const UpgradePage = () => {
               <CardHeader>
                 <Badge className="w-fit mb-2">Most Popular</Badge>
                 <CardTitle className="flex flex-col gap-2">
-                  <span>Premium</span>
+                  <span>Premium Plan</span>
                   <span className="text-3xl font-bold">$9.99</span>
-                  <span className="text-sm font-normal text-muted-foreground">per month</span>
+                  <span className="text-sm font-normal text-muted-foreground">/month</span>
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4 min-h-[240px]">
+                <p className="text-sm text-muted-foreground mb-4">Designed for individuals serious about relaxation and mental wellness.</p>
                 <ul className="space-y-2">
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-primary mt-0.5" />
-                    <span>Full sound library access</span>
+                    <span>Unlimited access to all categories</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-primary mt-0.5" />
-                    <span>Advanced mixing capabilities</span>
+                    <span>Ad-free high-quality streaming</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-primary mt-0.5" />
-                    <span>Unlimited playlists</span>
+                    <span>Offline listening</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-primary mt-0.5" />
-                    <span>Ad-free listening</span>
+                    <span>Create & save unlimited playlists</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-primary mt-0.5" />
-                    <span>High quality audio streaming</span>
+                    <span>Sleep timer, loop mode, and mood filters</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="h-5 w-5 text-primary mt-0.5" />
+                    <span>Personalized recommendations</span>
                   </li>
                 </ul>
               </CardContent>
@@ -142,16 +156,17 @@ const UpgradePage = () => {
               </CardFooter>
             </Card>
             
-            {/* Pro Plan */}
+            {/* Family Plan */}
             <Card>
               <CardHeader>
                 <CardTitle className="flex flex-col gap-2">
-                  <span>Pro</span>
+                  <span>Family Plan</span>
                   <span className="text-3xl font-bold">$19.99</span>
-                  <span className="text-sm font-normal text-muted-foreground">per month</span>
+                  <span className="text-sm font-normal text-muted-foreground">/month</span>
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4 min-h-[240px]">
+                <p className="text-sm text-muted-foreground mb-4">One subscription for the whole household.</p>
                 <ul className="space-y-2">
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-primary mt-0.5" />
@@ -159,24 +174,28 @@ const UpgradePage = () => {
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-primary mt-0.5" />
-                    <span>Early access to new sounds</span>
+                    <span>Up to 5 user profiles</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-primary mt-0.5" />
-                    <span>Offline listening</span>
+                    <span>Parental control for kids' sounds</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-primary mt-0.5" />
-                    <span>Professional sound editing tools</span>
+                    <span>Family-shared playlists</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-primary mt-0.5" />
-                    <span>Priority customer support</span>
+                    <span>Profile-specific recommendations</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="h-5 w-5 text-primary mt-0.5" />
+                    <span>Early access to new sound packs</span>
                   </li>
                 </ul>
               </CardContent>
               <CardFooter>
-                <Button variant="outline" className="w-full">Upgrade to Pro</Button>
+                <Button variant="outline" className="w-full">Upgrade to Family</Button>
               </CardFooter>
             </Card>
           </div>
