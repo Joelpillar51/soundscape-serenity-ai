@@ -54,7 +54,7 @@ const Player = ({
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-card/90 backdrop-blur-md py-3 px-4 border-t border-white/5 z-50">
-      <div className="container mx-auto flex items-center">
+      <div className="mx-auto flex items-center max-w-7xl ml-auto pl-16 md:pl-64">
         <div className="hidden md:flex items-center gap-3 w-1/4">
           <img src={coverUrl} alt={title} className="h-12 w-12 rounded-md object-cover" />
           <div>
