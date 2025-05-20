@@ -99,7 +99,7 @@ const Onboarding = () => {
     }
     
     if (currentStep === OnboardingStep.LOADING) {
-      // Simulate sound generation
+      // Simulate sound creation
       setIsGenerating(true);
       setTimeout(() => {
         setIsGenerating(false);
@@ -159,9 +159,9 @@ const Onboarding = () => {
       case OnboardingStep.PREFERENCES:
         return "Sound Preferences (Optional)";
       case OnboardingStep.LOADING:
-        return "Generating Your Soundscape";
+        return "Creating Your Soundscape";
       case OnboardingStep.RESULT:
-        return "Your Calm, Created";
+        return "Your Sound, Created";
       default:
         return "Onboarding";
     }
@@ -338,7 +338,7 @@ const Onboarding = () => {
                 </div>
                 <p className="text-lg font-medium mb-2">Creating your perfect sound...</p>
                 <p className="text-sm text-muted-foreground text-center max-w-md">
-                  "Breathing space is coming... Our AI is composing a unique soundscape just for you."
+                  "Breathing space is coming... We're composing a unique soundscape just for you."
                 </p>
               </div>
             )}
@@ -368,7 +368,7 @@ const Onboarding = () => {
                     
                     <div className="flex gap-3">
                       <Button size="sm" variant="outline">
-                        Regenerate
+                        Create Again
                       </Button>
                       <Button size="sm">
                         Save to Playlist
@@ -404,7 +404,7 @@ const Onboarding = () => {
               {currentStep === OnboardingStep.RESULT ? (
                 "Go to Dashboard"
               ) : currentStep === OnboardingStep.PREFERENCES ? (
-                "Generate"
+                "Create"
               ) : (
                 <>Next <ArrowRight className="ml-2 h-4 w-4" /></>
               )}

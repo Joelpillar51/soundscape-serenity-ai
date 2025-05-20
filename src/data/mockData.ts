@@ -134,8 +134,8 @@ export const features = [
   },
   {
     icon: "✨",
-    title: "AI Generation",
-    description: "Our advanced AI creates a unique soundscape tailored specifically to your needs."
+    title: "Custom Generation",
+    description: "Our advanced system creates a unique soundscape tailored specifically to your needs."
   }
 ];
 

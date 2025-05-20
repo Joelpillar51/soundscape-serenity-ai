@@ -46,7 +46,7 @@ const GeneratePlaylistDialog = ({ isOpen, onClose }: GeneratePlaylistDialogProps
     setTimeout(() => {
       setIsGenerating(false);
       toast({
-        title: "Playlist generated successfully!",
+        title: "Playlist created successfully!",
         description: `Your "${playlistName}" playlist has been created with ${soundCount} ${mood} sounds.`,
       });
       onClose();
@@ -63,7 +63,7 @@ const GeneratePlaylistDialog = ({ isOpen, onClose }: GeneratePlaylistDialogProps
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Disc className="h-5 w-5 text-primary" />
-            Generate Sound Playlist
+            Create Sound Playlist
           </DialogTitle>
           <DialogDescription>
             Create a customized sound playlist based on your preferences.
@@ -136,12 +136,12 @@ const GeneratePlaylistDialog = ({ isOpen, onClose }: GeneratePlaylistDialogProps
               {isGenerating ? (
                 <>
                   <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                  Generating...
+                  Creating...
                 </>
               ) : (
                 <>
                   <Music className="h-4 w-4 mr-2" />
-                  Generate Playlist
+                  Create Playlist
                 </>
               )}
             </Button>

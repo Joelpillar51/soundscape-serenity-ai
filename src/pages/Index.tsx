@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { ArrowRight, Check, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -27,7 +28,7 @@ const Index = () => {
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
-                AI-generated sounds for sleep, focus, and calm — tailored by your mood and age.
+                Expertly crafted sounds for sleep, focus, and calm — tailored by your mood and age.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/onboarding">
@@ -106,7 +107,7 @@ const Index = () => {
           <div className="flex justify-center mt-12">
             <Link to="/onboarding">
               <Button size="lg">
-                Generate Your First Sound <ArrowRight className="ml-2 h-4 w-4" />
+                Create Your First Sound <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
           </div>
@@ -238,7 +239,7 @@ const Index = () => {
             </p>
             <Link to="/onboarding">
               <Button size="lg">
-                Generate Your First Sound <ArrowRight className="ml-2 h-4 w-4" />
+                Create Your First Sound <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
           </div>
