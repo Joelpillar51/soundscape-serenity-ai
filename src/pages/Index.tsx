@@ -51,7 +51,7 @@ const Index = () => {
                   <h3 className="text-xl font-medium mt-6 mb-2">Evening Calm</h3>
                   <p className="text-sm text-muted-foreground">30-minute sleep soundscape</p>
                   <Button size="sm" className="mt-6">
-                    Generate Your Sound
+                    Create Your Sound
                   </Button>
                 </div>
               </div>
@@ -83,33 +83,58 @@ const Index = () => {
         </div>
       </section>
       
-      {/* How It Works */}
-      <section id="how-it-works" className="py-20">
+      {/* For You Section - Replaces How It Works */}
+      <section id="for-you" className="py-20">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col items-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">How It Works</h2>
-            <p className="text-muted-foreground text-center max-w-xl">
-              Create your perfect soundscape in three simple steps.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <FeatureItem
-                key={index}
-                icon={<span className="text-xl">{feature.icon}</span>}
-                title={feature.title}
-                description={feature.description}
-              />
-            ))}
-          </div>
-          
-          <div className="flex justify-center mt-12">
-            <Link to="/onboarding">
-              <Button size="lg">
-                Create Your First Sound <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+          <div className="flex justify-between items-center mb-10">
+            <h2 className="text-3xl font-bold">For You</h2>
+            <Link to="/explore" className="text-sm font-medium text-primary">
+              View All
             </Link>
+          </div>
+          
+          <div className="grid grid-cols-1 gap-8">
+            {/* Sleep Sounds */}
+            <div>
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-xl font-semibold">Sleep Sounds</h3>
+                <Link to="/explore?category=sleep" className="text-sm font-medium text-primary">
+                  More
+                </Link>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                {soundscapes.filter(sound => sound.category === "Sleep").slice(0, 4).map((sound) => (
+                  <SoundCard
+                    key={sound.id}
+                    title={sound.title}
+                    category={sound.category}
+                    imageUrl={sound.imageUrl}
+                    duration={sound.duration}
+                  />
+                ))}
+              </div>
+            </div>
+            
+            {/* Focus Sounds */}
+            <div>
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-xl font-semibold">Focus Sounds</h3>
+                <Link to="/explore?category=focus" className="text-sm font-medium text-primary">
+                  More
+                </Link>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                {soundscapes.filter(sound => sound.category === "Focus").slice(0, 4).map((sound) => (
+                  <SoundCard
+                    key={sound.id}
+                    title={sound.title}
+                    category={sound.category}
+                    imageUrl={sound.imageUrl}
+                    duration={sound.duration}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

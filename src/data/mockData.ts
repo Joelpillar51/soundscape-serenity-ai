@@ -119,6 +119,34 @@ export const soundscapes = [
     imageUrl: "/placeholder.svg",
     duration: "2 hr",
   },
+  {
+    id: 9,
+    title: "Forest Breeze",
+    category: "Sleep",
+    imageUrl: "/placeholder.svg",
+    duration: "45 min",
+  },
+  {
+    id: 10,
+    title: "Morning Meditation",
+    category: "Calm",
+    imageUrl: "/placeholder.svg",
+    duration: "20 min",
+  },
+  {
+    id: 11,
+    title: "Study Session",
+    category: "Focus",
+    imageUrl: "/placeholder.svg",
+    duration: "1.5 hr",
+  },
+  {
+    id: 12,
+    title: "Dreamy Night",
+    category: "Sleep",
+    imageUrl: "/placeholder.svg",
+    duration: "8 hr",
+  },
 ];
 
 export const features = [

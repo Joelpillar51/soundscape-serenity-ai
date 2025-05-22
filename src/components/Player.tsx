@@ -53,59 +53,42 @@ const Player = ({
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-card/90 backdrop-blur-md py-3 px-4 border-t border-white/5 z-50">
-      <div className="mx-auto flex items-center max-w-[calc(100%-16rem)] ml-auto pl-0 md:pl-0">
-        <div className="hidden md:flex items-center gap-3 w-1/4">
-          <img src={coverUrl} alt={title} className="h-12 w-12 rounded-md object-cover" />
-          <div>
-            <h4 className="text-sm font-medium line-clamp-1">{title}</h4>
-            <p className="text-xs text-muted-foreground">{artist}</p>
-          </div>
+    <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 max-w-md w-[90%] bg-card/90 backdrop-blur-md py-3 px-4 rounded-xl border border-white/10 shadow-lg z-50">
+      <div className="flex items-center gap-3">
+        <img src={coverUrl} alt={title} className="h-12 w-12 rounded-md object-cover" />
+        <div className="flex-1">
+          <h4 className="text-sm font-medium line-clamp-1">{title}</h4>
+          <p className="text-xs text-muted-foreground">{artist}</p>
         </div>
         
-        <div className="flex-1 flex flex-col items-center justify-center">
-          <div className="flex items-center gap-4">
-            <Button size="icon" variant="ghost" className="rounded-full text-muted-foreground hover:text-foreground">
-              <SkipBack className="h-5 w-5" />
-            </Button>
-            <Button 
-              size="icon" 
-              onClick={handlePlayPause} 
-              className="rounded-full h-10 w-10 bg-primary text-primary-foreground hover:bg-primary/90"
-            >
-              {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
-            </Button>
-            <Button size="icon" variant="ghost" className="rounded-full text-muted-foreground hover:text-foreground">
-              <SkipForward className="h-5 w-5" />
-            </Button>
-          </div>
-          
-          <div className="w-full max-w-md flex items-center gap-2 mt-2">
-            <span className="text-xs text-muted-foreground w-10 text-right">
-              {formatTime(currentTime)}
-            </span>
-            <Slider
-              value={[currentTime]}
-              max={duration}
-              step={1}
-              className="flex-1"
-              onValueChange={(values) => setCurrentTime(values[0])}
-            />
-            <span className="text-xs text-muted-foreground w-10">
-              {formatTime(duration)}
-            </span>
-          </div>
+        <div className="flex items-center gap-2">
+          <Button 
+            size="icon" 
+            onClick={handlePlayPause} 
+            className="rounded-full h-9 w-9 bg-primary text-primary-foreground hover:bg-primary/90"
+          >
+            {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+          </Button>
+          <Button size="icon" variant="ghost" className="rounded-full h-9 w-9 text-muted-foreground hover:text-foreground">
+            <SkipForward className="h-4 w-4" />
+          </Button>
         </div>
-        
-        <div className="hidden md:flex items-center gap-2 w-1/4 justify-end">
-          <Volume className="h-4 w-4 text-muted-foreground" />
-          <Slider
-            value={[70]}
-            max={100}
-            step={1}
-            className="w-24"
-          />
-        </div>
+      </div>
+      
+      <div className="w-full flex items-center gap-2 mt-2">
+        <span className="text-xs text-muted-foreground w-10 text-right">
+          {formatTime(currentTime)}
+        </span>
+        <Slider
+          value={[currentTime]}
+          max={duration}
+          step={1}
+          className="flex-1"
+          onValueChange={(values) => setCurrentTime(values[0])}
+        />
+        <span className="text-xs text-muted-foreground w-10">
+          {formatTime(duration)}
+        </span>
       </div>
     </div>
   );
